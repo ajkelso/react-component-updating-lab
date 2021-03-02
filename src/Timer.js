@@ -23,6 +23,15 @@ class Timer extends Component {
     clearInterval(this.interval);
   }
 
+  componentDidUpdate() {
+    this.timer.current.style.color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    console.log(this.timer.current.style.color);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return (this.state.time === nextState.time) ? false : true
+  }
+
   render() {
     const { time, color, logText } = this.state;
     return (
